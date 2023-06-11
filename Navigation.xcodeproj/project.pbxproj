@@ -22,6 +22,7 @@
 		0054969629DC304200902BF3 /* PostLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054969529DC304200902BF3 /* PostLogInViewController.swift */; };
 		008319A729EEECDD00C92210 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008319A629EEECDD00C92210 /* PostTableViewCell.swift */; };
 		009C5B4F299D2B8800C4E50C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C5B4E299D2B8800C4E50C /* InfoViewController.swift */; };
+		00A61E672A3563C10095F6CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A61E662A3563C10095F6CB /* User.swift */; };
 		00A70B4829C324DB00F1309B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A70B4729C324DB00F1309B /* LogInViewController.swift */; };
 		00AC24BB299B6A0A000E8D02 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC24BA299B6A0A000E8D02 /* FeedViewController.swift */; };
 		00FD8EAC29A6381000F1DE3E /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD8EAB29A6381000F1DE3E /* ProfileHeaderView.swift */; };
@@ -83,6 +84,7 @@
 		008319A629EEECDD00C92210 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		008319AC29EEED7500C92210 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		009C5B4E299D2B8800C4E50C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		00A61E662A3563C10095F6CB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00A70B4729C324DB00F1309B /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		00AC24BA299B6A0A000E8D02 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		00FD8EAB29A6381000F1DE3E /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				002898C6299ACB2F00A52AC0 /* Assets.xcassets */,
 				002898C8299ACB2F00A52AC0 /* LaunchScreen.storyboard */,
 				002898CB299ACB2F00A52AC0 /* Info.plist */,
+				00A61E662A3563C10095F6CB /* User.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				002CA9BF29ED35CA005EA509 /* ProfileTableHeaderView.swift in Sources */,
 				009C5B4F299D2B8800C4E50C /* InfoViewController.swift in Sources */,
 				00A70B4829C324DB00F1309B /* LogInViewController.swift in Sources */,
+				00A61E672A3563C10095F6CB /* User.swift in Sources */,
 				002898C0299ACB2E00A52AC0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
