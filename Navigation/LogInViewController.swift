@@ -133,13 +133,32 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset.bottom = 0.0
     }
     @objc func logIn(sender: UIButton) {
-            let userService = CurrentUserService()
-            guard let login = loginTextField.text else { return }
-            let user = userService.getUser(login: login)
-            let profileVC = ProfileViewController(userService: userService)
-            profileVC.user = user
-            self.navigationController?.pushViewController(profileVC, animated: true)
+        guard let login = loginTextField.text else {
+            
+            showErrorMessage("Invalid login")
+            return
         }
+        
+        let userService = CurrentUserService()
+        guard let user = userService.getUser(login: login) else {
+            
+            showErrorMessage("User not found")
+            return
+        }
+        
+        let profileVC = ProfileViewController(userService: <#UserService#>)
+        profileVC.user = user
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+
+        
+        private func showErrorMessage(_ message: String) {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+    
     private func addSubview() {
         scrollView.addSubview(stackView)
     }
