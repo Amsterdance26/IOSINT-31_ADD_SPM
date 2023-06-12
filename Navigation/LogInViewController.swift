@@ -133,7 +133,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset.bottom = 0.0
     }
     @objc func logIn(sender: UIButton) {
-        let profileVC = ProfileViewController()
+        let profileVC = ProfileViewController(userService: <#UserService#>)
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     private func addSubview() {

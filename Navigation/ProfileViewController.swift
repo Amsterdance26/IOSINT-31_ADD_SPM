@@ -8,6 +8,12 @@
 import UIKit
 import StorageService
 
+import UIKit
+
+protocol UserService {
+    func getUser(login: String) -> User?
+}
+
 class User {
     let login: String
     let fullName: String
@@ -22,13 +28,24 @@ class User {
     }
 }
 
+class ExampleUserService: UserService {
+    func getUser(login: String) -> User? {
+        if login == "john" {
+            let user = User(login: "john", fullName: "John Doe", avatar: UIImage(named: "avatar")!, status: "Active")
+            return user
+        } else {
+            return nil
+        }
+    }
+}
+
 class ProfileViewController: UIViewController {
     let header: ProfileHeaderView = {
         var header = ProfileHeaderView()
         header.translatesAutoresizingMaskIntoConstraints = false
         return header
     }()
-
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +56,18 @@ class ProfileViewController: UIViewController {
         tableView.separatorColor = .gray
         return tableView
     }()
-
+    
+    let userService: UserService
+    
+    init(userService: UserService) {
+        self.userService = userService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,21 +106,21 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
 }
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
