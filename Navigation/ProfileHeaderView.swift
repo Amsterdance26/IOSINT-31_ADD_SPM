@@ -10,7 +10,7 @@ import StorageService
 
 final class ProfileHeaderView: UIView, UITextFieldDelegate {
 
-    private let avatarImageView: UIImageView = {
+    let avatarImageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "cat"))
         view.layer.cornerRadius = 40
         view.clipsToBounds = true
@@ -19,7 +19,7 @@ final class ProfileHeaderView: UIView, UITextFieldDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private let fullNameLabel: UILabel = {
+    let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "White Cat"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
