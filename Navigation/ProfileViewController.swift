@@ -8,7 +8,7 @@
 import UIKit
 import StorageService
 
-class ProfileTableHeaderView: UIViewController {
+class ProfileViewController: UIViewController {
     let header: ProfileHeaderView = {
         var header = ProfileHeaderView()
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +60,7 @@ class ProfileTableHeaderView: UIViewController {
     }
 }
 
-extension ProfileTableHeaderView: UITableViewDelegate {
+extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
@@ -68,7 +68,7 @@ extension ProfileTableHeaderView: UITableViewDelegate {
         UITableView.automaticDimension
     }
 }
-extension ProfileTableHeaderView: UITableViewDataSource {
+extension ProfileViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         1
