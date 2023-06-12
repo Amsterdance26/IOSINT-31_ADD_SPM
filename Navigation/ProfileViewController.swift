@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
     }()
     
     let userService: UserService
-    var user: User? // Добавляем свойство user типа User?
+    var user: User?
     
     init(userService: UserService) {
         self.userService = userService
@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        // Получаем информацию о пользователе и обновляем UI
+        
         if let login = UserDefaults.standard.string(forKey: "login") {
             user = userService.getUser(login: login)
             updateUI()
@@ -115,10 +115,10 @@ class ProfileViewController: UIViewController {
             return
         }
         
-        // Обновляем UI с информацией о пользователе
+        
         header.fullNameLabel.text = user.fullName
         header.avatarImageView.image = user.avatar
-        // Другие обновления UI, например, обновление статуса и других данных пользователя
+        
     }
 }
 
