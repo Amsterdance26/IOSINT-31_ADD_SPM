@@ -133,10 +133,13 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset.bottom = 0.0
     }
     @objc func logIn(sender: UIButton) {
-        let userService = ExampleUserService()
-        let profileVC = ProfileViewController(userService: userService)
-        self.navigationController?.pushViewController(profileVC, animated: true)
-    }
+            let userService = CurrentUserService()
+            guard let login = loginTextField.text else { return }
+            let user = userService.getUser(login: login)
+            let profileVC = ProfileViewController(userService: userService)
+            profileVC.user = user
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
     private func addSubview() {
         scrollView.addSubview(stackView)
     }
@@ -196,6 +199,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
             buttonLogIn.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
         ])
     }
+    
     private func setupKeyboardObservers() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(

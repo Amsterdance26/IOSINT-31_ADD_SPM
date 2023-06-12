@@ -28,7 +28,7 @@ class User {
     }
 }
 
-class ExampleUserService: UserService {
+class CurrentUserService: UserService {
     func getUser(login: String) -> User? {
         if login == "john" {
             let user = User(login: "john", fullName: "John Doe", avatar: UIImage(named: "avatar")!, status: "Active")
