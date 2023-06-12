@@ -146,7 +146,7 @@ class LogInViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        let profileVC = ProfileViewController(userService: <#UserService#>)
+        let profileVC = ProfileViewController(userService: userService)
         profileVC.user = user
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
