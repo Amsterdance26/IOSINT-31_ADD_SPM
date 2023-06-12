@@ -8,6 +8,20 @@
 import UIKit
 import StorageService
 
+class User {
+    let login: String
+    let fullName: String
+    let avatar: UIImage
+    var status: String
+    
+    init(login: String, fullName: String, avatar: UIImage, status: String) {
+        self.login = login
+        self.fullName = fullName
+        self.avatar = avatar
+        self.status = status
+    }
+}
+
 class ProfileViewController: UIViewController {
     let header: ProfileHeaderView = {
         var header = ProfileHeaderView()
@@ -29,16 +43,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-#if DEBUG
+        #if DEBUG
         view.backgroundColor = .systemPink
-#else
+        #else
         view.backgroundColor = .systemGreen
-#endif
+        #endif
+        
         setupUI()
         setupTableView()
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
     func setupUI() {
         view.addSubview(header)
         NSLayoutConstraint.activate([
@@ -46,9 +62,9 @@ class ProfileViewController: UIViewController {
             header.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             header.heightAnchor.constraint(equalToConstant: 250),
-
         ])
     }
+    
     func setupTableView() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -64,21 +80,26 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         UITableView.automaticDimension
     }
 }
-extension ProfileViewController: UITableViewDataSource {
 
+extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell
-        else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else {
+            fatalError()
+        }
+        
         cell.configure(posts: posts[indexPath.row])
         return cell
     }
