@@ -31,7 +31,7 @@ class User {
 class CurrentUserService: UserService {
     func getUser(login: String) -> User? {
         if login == "john" {
-            let user = User(login: "john", fullName: "John Doe", avatar: UIImage(named: "avatar")!, status: "Active")
+            let user = User(login: "john", fullName: "John Doe", avatar: UIImage(named: "avatar") ?? UIImage(), status: "Active")
             return user
         } else {
             return nil
