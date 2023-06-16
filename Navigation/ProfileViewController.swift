@@ -86,27 +86,17 @@ class ProfileViewController: UIViewController {
         #if DEBUG
         view.backgroundColor = .systemPink
         userService = TestUserService(testUser: User(login: "test", fullName: "Test User", avatar: UIImage(named: "test_avatar") ?? UIImage(), status: "Active"))
+        let login = "test"
         #else
         view.backgroundColor = .systemGreen
         userService = CurrentUserService()
+        let login = "default"
         #endif
         
         setupUI()
         setupTableView()
         tableView.dataSource = self
         tableView.delegate = self
-        
-        let login: String
-        
-        #if DEBUG
-        login = "test"
-        #else
-        if let storedLogin = UserDefaults.standard.string(forKey: "login") {
-            login = storedLogin
-        } else {
-            login = "default"
-        }
-        #endif
         
         user = userService.getUser(login: login)
         updateUI()
