@@ -37,6 +37,18 @@ class CurrentUserService: UserService {
     }
 }
 
+class TestUserService: UserService {
+    let testUser: User
+    
+    init(testUser: User) {
+        self.testUser = testUser
+    }
+    
+    func getUser(login: String) -> User? {
+        return testUser
+    }
+}
+
 class ProfileViewController: UIViewController {
     let header: ProfileHeaderView = {
         var header = ProfileHeaderView()
@@ -55,7 +67,8 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
     
-    let userService: UserService
+    var userService: UserService
+    
     var user: User?
     
     init(userService: UserService) {
@@ -72,8 +85,10 @@ class ProfileViewController: UIViewController {
         
         #if DEBUG
         view.backgroundColor = .systemPink
+        userService = TestUserService(testUser: User(login: "test", fullName: "Test User", avatar: UIImage(named: "test_avatar") ?? UIImage(), status: "Active"))
         #else
         view.backgroundColor = .systemGreen
+        userService = CurrentUserService()
         #endif
         
         setupUI()
@@ -81,11 +96,20 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        let login: String
         
-        if let login = UserDefaults.standard.string(forKey: "login") {
-            user = userService.getUser(login: login)
-            updateUI()
+        #if DEBUG
+        login = "test"
+        #else
+        if let storedLogin = UserDefaults.standard.string(forKey: "login") {
+            login = storedLogin
+        } else {
+            login = "default"
         }
+        #endif
+        
+        user = userService.getUser(login: login)
+        updateUI()
     }
     
     func setupUI() {
@@ -113,10 +137,8 @@ class ProfileViewController: UIViewController {
             return
         }
         
-        
         header.fullNameLabel.text = user.fullName
         header.avatarImageView.image = user.avatar
-        
     }
 }
 
