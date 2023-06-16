@@ -1,5 +1,5 @@
 //
-//  ProfileTableHeaderView.swift
+//  ProfileViewController.swift
 //  Navigation
 //
 //  Created by Василий Васильевич on 17.04.2023.
